@@ -13,7 +13,7 @@ const SiderPanel = () => {
           <Link href="/addproduct">Add Product</Link>
         </Menu.Item>
         <Menu.Item key="2" icon={<UploadOutlined />}>
-          nav 2
+          <Link href="/addBlog">Add Blog</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<UploadOutlined />}>
           nav 3

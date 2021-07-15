@@ -1,9 +1,20 @@
 import "../styles/globals.css";
-import { Layout } from "antd";
+import dynamic from "next/dynamic";
 import "antd/dist/antd.css";
 import SiderPanel from "../components/SiderPanel";
+
+const Layout = dynamic(() => import("antd").then((module) => module.Layout), {
+  ssr: false,
+});
+const Content = dynamic(
+  () => import("antd").then((module) => module.Layout.Content),
+  {
+    ssr: false,
+  }
+);
+
 function MyApp({ Component, pageProps }) {
-  const { Sider, Content, Header } = Layout;
+  // const { Sider, Content, Header } = Layout;
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <SiderPanel />

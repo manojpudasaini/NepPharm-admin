@@ -52,32 +52,32 @@ const Addproduct = () => {
 
   const handleFormSubmit = async () => {
     console.log(productDetail);
-    await Axios({
-      method: "POST",
-      url: "http://localhost:5000/product",
-      data: {
-        title: productDetail.title,
-        description: productDetail.description,
-        price: productDetail.price,
-        category: productDetail.category,
-        image: productDetail.image,
-        requirePrescription: productDetail.requirePrescription,
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-        notification.success({
-          message: "Successfully added product",
-          description: `${response.data.title}`,
-        });
+      await Axios({
+        method: "POST",
+        url: "http://localhost:5000/product",
+        data: {
+          title: productDetail.title,
+          description: productDetail.description,
+          price: productDetail.price,
+          category: productDetail.category,
+          image: productDetail.image,
+          requirePrescription: productDetail.requirePrescription,
+        },
       })
-      .catch(function (error) {
-        console.log(error);
-        notification.error({
-          message: "Error occurred while adding product",
-          description: `${error.message}`,
+        .then(function (response) {
+          console.log(response);
+          notification.success({
+            message: "Successfully added product",
+            description: `${response.data.title}`,
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+          notification.error({
+            message: "Error occurred while adding product",
+            description: `${error.message}`,
+          });
         });
-      });
     await form.resetFields();
     await setProductDetail({ ...productDetail, image: null });
   };
